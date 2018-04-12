@@ -1,0 +1,22 @@
+version: "3"
+services:
+        enterprise:
+                build: .
+                restart: always
+                container_name: enterprise
+                hostname: 'enterprise.philgore.net'
+                volumes:
+                        - '/opt/Enterprise:/opt/Enterprise'
+                environment:
+                        VIRTUAL_PORT: '8080'
+                        VIRTUAL_HOST: 'enterprise.philgore.net'
+                        LETSENCRYPT_EMAIL: 'example@gmail.com'
+                        LETSENCRYPT_HOST: 'enterprise.philgore.net'
+                expose:
+                        - 8080
+                        - 8000
+                        - 8001
+networks:
+    default:
+      external:
+        name: nginx-net

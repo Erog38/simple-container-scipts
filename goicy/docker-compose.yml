@@ -1,0 +1,17 @@
+version: "3"
+services:
+        goicy:
+                build: .
+                restart: always
+                container_name: goicy
+                hostname: 'icy'
+                volumes:
+                        - '/opt/goicy:/opt/goicy'
+                expose:
+                        - 8000
+                        - 8001
+networks:
+    default:
+      external:
+        name: shout-net
+ 
